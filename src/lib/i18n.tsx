@@ -1,6 +1,11 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
 
 export type Lang = "en" | "ru";
 
@@ -58,6 +63,8 @@ export const translations = {
       title: "Let's Talk",
       subtitle: "Get in touch",
       description: "Have a project in mind or just want to chat about AI and tech? I'm always open to interesting conversations.",
+      available_for: "Available for",
+      offers: ["AI integrations", "Dashboards", "Full-stack apps"],
       email_label: "Email me",
       or: "or find me on",
     },
@@ -119,6 +126,8 @@ export const translations = {
       title: "Поговорим",
       subtitle: "Связаться",
       description: "Есть идея проекта или просто хочешь обсудить ИИ и технологии? Всегда рад интересным разговорам.",
+      available_for: "Могу помочь с",
+      offers: ["AI-интеграциями", "Дашбордами", "Full-stack приложениями"],
       email_label: "Написать на email",
       or: "или найди меня в",
     },
@@ -130,7 +139,27 @@ export const translations = {
 } as const;
 
 type Translations = typeof translations.en;
-type AnyTranslations = typeof translations[Lang];
+const languageStorageKey = "portfolio-lang";
+const languageChangeEvent = "portfolio-language-change";
+
+function getStoredLang(): Lang {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  const stored = window.localStorage.getItem(languageStorageKey);
+  return stored === "en" || stored === "ru" ? stored : "en";
+}
+
+function subscribeToLangChange(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(languageChangeEvent, callback);
+
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(languageChangeEvent, callback);
+  };
+}
 
 const LanguageContext = createContext<{
   lang: Lang;
@@ -143,8 +172,22 @@ const LanguageContext = createContext<{
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
-  const toggle = () => setLang((l) => (l === "en" ? "ru" : "en"));
+  const lang = useSyncExternalStore<Lang>(
+    subscribeToLangChange,
+    getStoredLang,
+    () => "en",
+  );
+
+  const toggle = () => {
+    const next = lang === "en" ? "ru" : "en";
+    window.localStorage.setItem(languageStorageKey, next);
+    window.dispatchEvent(new Event(languageChangeEvent));
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const t = translations[lang] as unknown as Translations;
   return (
     <LanguageContext.Provider value={{ lang, t, toggle }}>

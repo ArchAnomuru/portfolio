@@ -18,7 +18,7 @@ function FadeUp({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
@@ -76,11 +76,37 @@ export default function Contact() {
 
           <FadeUp delay={0.1}>
             <p
-              className="text-base leading-relaxed mb-10"
+              className="text-base leading-relaxed mb-6"
               style={{ color: "var(--text-secondary)" }}
             >
               {t.contact.description}
             </p>
+          </FadeUp>
+
+          <FadeUp delay={0.15}>
+            <div className="mb-10">
+              <p
+                className="font-mono text-xs tracking-widest uppercase mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
+                {t.contact.available_for}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {t.contact.offers.map((offer) => (
+                  <span
+                    key={offer}
+                    className="rounded-full border px-3 py-1.5 font-mono text-xs"
+                    style={{
+                      borderColor: "var(--border)",
+                      background: "var(--bg-card)",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {offer}
+                  </span>
+                ))}
+              </div>
+            </div>
           </FadeUp>
 
           {/* Email CTA */}

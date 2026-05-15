@@ -2,9 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { MapPin, Briefcase } from "lucide-react";
+
+const profileRows = [
+  ["name", "Bekhruz Mirkhamidov"],
+  ["role", "Full-Stack Dev"],
+  ["focus", "AI Integration"],
+] as const;
+
+const stackItems = ["React", "Next.js", "TypeScript", "Python", "Claude API"];
 
 function FadeUp({
   children,
@@ -18,7 +26,7 @@ function FadeUp({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={false}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
     >
@@ -117,21 +125,48 @@ export default function About() {
               </div>
 
               <pre
-                className="font-mono text-sm leading-relaxed"
+                className="overflow-x-auto font-mono text-sm leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <code>{`{
-  `}<span style={{ color: "var(--accent-cyan)" }}>"name"</span>{`: `}<span style={{ color: "#a8e6a3" }}>"Bekhruz Mirkhamidov"</span>{`,
-  `}<span style={{ color: "var(--accent-cyan)" }}>"role"</span>{`: `}<span style={{ color: "#a8e6a3" }}>"Full-Stack Dev"</span>{`,
-  `}<span style={{ color: "var(--accent-cyan)" }}>"focus"</span>{`: `}<span style={{ color: "#a8e6a3" }}>"AI Integration"</span>{`,
-  `}<span style={{ color: "var(--accent-cyan)" }}>"stack"</span>{`: [
-    `}<span style={{ color: "#a8e6a3" }}>"React"</span>{`, `}<span style={{ color: "#a8e6a3" }}>"Next.js"</span>{`,
-    `}<span style={{ color: "#a8e6a3" }}>"TypeScript"</span>{`,
-    `}<span style={{ color: "#a8e6a3" }}>"Python"</span>{`,
-    `}<span style={{ color: "#a8e6a3" }}>"Claude API"</span>{`
-  ]`}{`,
-  `}<span style={{ color: "var(--accent-cyan)" }}>"status"</span>{`: `}<span style={{ color: "var(--accent-purple)" }}>"available"</span>{`
-}`}</code>
+                <code>
+                  {"{\n"}
+                  {profileRows.map(([key, value]) => (
+                    <Fragment key={key}>
+                      {"  "}
+                      <span style={{ color: "var(--accent-cyan)" }}>
+                        &quot;{key}&quot;
+                      </span>
+                      {": "}
+                      <span style={{ color: "#a8e6a3" }}>
+                        &quot;{value}&quot;
+                      </span>
+                      {",\n"}
+                    </Fragment>
+                  ))}
+                  {"  "}
+                  <span style={{ color: "var(--accent-cyan)" }}>
+                    &quot;stack&quot;
+                  </span>
+                  {": [\n"}
+                  {stackItems.map((item, index) => (
+                    <Fragment key={item}>
+                      {"    "}
+                      <span style={{ color: "#a8e6a3" }}>
+                        &quot;{item}&quot;
+                      </span>
+                      {index === stackItems.length - 1 ? "\n" : ",\n"}
+                    </Fragment>
+                  ))}
+                  {"  ],\n  "}
+                  <span style={{ color: "var(--accent-cyan)" }}>
+                    &quot;status&quot;
+                  </span>
+                  {": "}
+                  <span style={{ color: "var(--accent-purple)" }}>
+                    &quot;available&quot;
+                  </span>
+                  {"\n}"}
+                </code>
               </pre>
             </div>
           </FadeUp>
