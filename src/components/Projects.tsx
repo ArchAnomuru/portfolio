@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useLang } from "@/lib/i18n";
 import { projects, type ProjectCategory } from "@/data/projects";
@@ -48,6 +49,22 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       className="rounded-2xl p-6 card-border flex flex-col h-full"
       style={{ background: "var(--bg-card)" }}
     >
+      {/* Preview image */}
+      {project.image && (
+        <div
+          className="-mx-6 -mt-6 mb-5 relative aspect-[16/10] overflow-hidden rounded-t-2xl"
+          style={{ borderBottom: "1px solid var(--border)" }}
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover object-top"
+          />
+        </div>
+      )}
+
       {/* Category dot + featured */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">

@@ -9,6 +9,7 @@ export interface Project {
   github?: string;
   live?: string;
   featured?: boolean;
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     tags: ["Python", "Claude API", "Telegram", "Flask", "STT/TTS"],
     github: "https://github.com/Anomuru",
     featured: true,
+    image: "/rafael-assistant.png",
   },
   {
     id: "life-tracking",
