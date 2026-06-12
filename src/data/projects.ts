@@ -16,8 +16,8 @@ export const projects: Project[] = [
     id: "rafael",
     title: "Rafael — AI Assistant",
     description: {
-      en: "Personal AI assistant with voice interface, Telegram bot, and web UI. Features persistent categorized memory, web search, file tools, and voice reminders. Powered by Anthropic Claude API.",
-      ru: "Персональный AI-ассистент с голосовым интерфейсом, Telegram-ботом и веб-UI. Имеет постоянную память, поиск в интернете и голосовые напоминания. Работает на Anthropic Claude API.",
+      en: "An AI assistant that takes voice or text commands and acts on them — searches the web, works with files, sets voice reminders, and remembers context across sessions via a categorized long-term memory. Ships as a Telegram bot and web app on the Claude API — the same tool-calling and memory patterns behind production customer chatbots.",
+      ru: "AI-ассистент, который принимает голосовые и текстовые команды и выполняет их — ищет в интернете, работает с файлами, ставит голосовые напоминания и помнит контекст между сессиями через категоризированную долгосрочную память. Работает как Telegram-бот и веб-приложение на Claude API — те же паттерны tool-calling и памяти, что и в продакшн-чат-ботах.",
     },
     category: "personal",
     tags: ["Python", "Claude API", "Telegram", "Flask", "STT/TTS"],
@@ -40,8 +40,8 @@ export const projects: Project[] = [
     id: "mita",
     title: "Mita — AI Character",
     description: {
-      en: "An AI character with a unique personality (tsundere cat) built for learning LLM development. Features persistent long-term memory, function calling, and a web chat interface.",
-      ru: "AI-персонаж с уникальной личностью (tsundere кошка), созданный для изучения LLM. Постоянная память, вызов функций и веб-чат.",
+      en: "A conversational AI with a consistent persona, demonstrating the core building blocks of production chatbots: long-term memory that persists across sessions, function/tool calling, and a web chat interface.",
+      ru: "Разговорный AI с устойчивой личностью, демонстрирующий ключевые компоненты продакшн-чат-ботов: долгосрочную память между сессиями, вызов функций (tool calling) и веб-чат.",
     },
     category: "personal",
     tags: ["Python", "Groq API", "Flask", "LLM", "Memory System"],
