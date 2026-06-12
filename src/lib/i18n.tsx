@@ -14,6 +14,7 @@ export const translations = {
     nav: {
       about: "About",
       skills: "Skills",
+      services: "Services",
       projects: "Projects",
       contact: "Contact",
     },
@@ -44,6 +45,47 @@ export const translations = {
         backend: "Backend",
         ai: "AI & ML",
         tools: "Tools & Infra",
+      },
+    },
+    services: {
+      title: "Services",
+      subtitle: "How I can help",
+      timeline_label: "Typical delivery",
+      cta: "Discuss this",
+      items: {
+        chatbot: {
+          title: "AI Chatbot & RAG Assistant",
+          desc: "A chatbot that answers from your own data — docs, website, or knowledge base — instead of generic replies.",
+          timeline: "3–7 days",
+          points: [
+            "Retrieval over your documents (RAG)",
+            "Embeddable web widget or Telegram bot",
+            "Conversation memory & web search",
+          ],
+          tags: ["Claude / GPT", "RAG", "Vector search", "Widget"],
+        },
+        automation: {
+          title: "Workflow Automation",
+          desc: "Connect your tools and let AI handle the repetitive work — so your team stops doing it by hand.",
+          timeline: "2–5 days",
+          points: [
+            "Lead capture, data entry, reports, alerts",
+            "AI step in the middle (classify, summarize, draft)",
+            "Built on n8n / Make + your APIs",
+          ],
+          tags: ["n8n / Make", "APIs", "Webhooks", "Scheduling"],
+        },
+        integration: {
+          title: "LLM Feature Integration",
+          desc: "Add AI into your existing product — wired into your stack with proper error handling, not a fragile demo.",
+          timeline: "4–10 days",
+          points: [
+            "Summarize, classify, extract, generate",
+            "Function calling & streaming responses",
+            "Type-safe, tested, production-ready",
+          ],
+          tags: ["Claude / GPT API", "Function calling", "Streaming", "TS / Python"],
+        },
       },
     },
     projects: {
@@ -77,6 +119,7 @@ export const translations = {
     nav: {
       about: "Обо мне",
       skills: "Навыки",
+      services: "Услуги",
       projects: "Проекты",
       contact: "Контакт",
     },
@@ -107,6 +150,47 @@ export const translations = {
         backend: "Бэкенд",
         ai: "ИИ и ML",
         tools: "Инструменты",
+      },
+    },
+    services: {
+      title: "Услуги",
+      subtitle: "Чем могу помочь",
+      timeline_label: "Срок обычно",
+      cta: "Обсудить",
+      items: {
+        chatbot: {
+          title: "AI чат-бот и RAG-ассистент",
+          desc: "Чат-бот, который отвечает по вашим данным — документам, сайту или базе знаний, а не общими фразами.",
+          timeline: "3–7 дней",
+          points: [
+            "Поиск по вашим документам (RAG)",
+            "Виджет на сайт или Telegram-бот",
+            "Память диалога и поиск в интернете",
+          ],
+          tags: ["Claude / GPT", "RAG", "Векторный поиск", "Виджет"],
+        },
+        automation: {
+          title: "Автоматизация процессов",
+          desc: "Соединяю ваши сервисы и поручаю рутину AI — чтобы команда перестала делать это руками.",
+          timeline: "2–5 дней",
+          points: [
+            "Лиды, ввод данных, отчёты, уведомления",
+            "AI-шаг внутри (классификация, саммари, черновик)",
+            "На n8n / Make + ваши API",
+          ],
+          tags: ["n8n / Make", "API", "Webhooks", "Расписания"],
+        },
+        integration: {
+          title: "Внедрение LLM в продукт",
+          desc: "Добавляю AI в ваш существующий продукт — встроено в стек с нормальной обработкой ошибок, не хрупкое демо.",
+          timeline: "4–10 дней",
+          points: [
+            "Саммари, классификация, извлечение, генерация",
+            "Function calling и стриминг ответов",
+            "Типобезопасно, с тестами, production-ready",
+          ],
+          tags: ["Claude / GPT API", "Function calling", "Стриминг", "TS / Python"],
+        },
       },
     },
     projects: {
