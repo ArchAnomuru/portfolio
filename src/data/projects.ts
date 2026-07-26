@@ -86,6 +86,29 @@ export const projects: Project[] = [
       "Docker",
     ],
     featured: true,
+    shots: [
+      {
+        src: "/projects/gennis-v2-accounting.webp",
+        caption: {
+          en: "Accounting — twelve payment categories across tuition, salaries, expenses and capital",
+          ru: "Бухгалтерия — двенадцать категорий платежей: обучение, зарплаты, расходы и капитал",
+        },
+      },
+      {
+        src: "/projects/gennis-v2-report.webp",
+        caption: {
+          en: "Consolidated report — income, payroll, expenses and debt, with month-by-month dynamics",
+          ru: "Сводный отчёт — доходы, зарплаты, расходы и долги с помесячной динамикой",
+        },
+      },
+      {
+        src: "/projects/gennis-v2-expenses.webp",
+        caption: {
+          en: "Expenses tab — overhead by type, payment channel and date",
+          ru: "Вкладка расходов — накладные по типу, каналу оплаты и дате",
+        },
+      },
+    ],
   },
   {
     id: "gennis-management",
