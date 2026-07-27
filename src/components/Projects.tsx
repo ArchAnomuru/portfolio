@@ -173,27 +173,66 @@ function ShotPanel({
   const shots = project.shots ?? [];
   const cover = shots[0];
 
+  // No screenshot: show the shape of the system in numbers instead. Reads as a
+  // deliberate panel rather than a gap waiting to be filled.
   if (!cover) {
     return (
       <div
-        className="relative h-full min-h-[240px] flex flex-col items-center justify-center gap-3"
+        className="relative h-full min-h-[240px] flex flex-col justify-center gap-7 p-7 md:p-9"
         style={{
           background: `radial-gradient(120% 120% at 30% 10%, ${color}14, transparent 60%), var(--bg-surface)`,
         }}
       >
-        <span
-          className="text-5xl font-bold select-none"
-          style={{ color: color + "40", letterSpacing: "-0.04em" }}
-          aria-hidden
-        >
-          {project.title.slice(0, 2)}
-        </span>
-        <span
-          className="font-mono text-[11px] tracking-widest uppercase"
-          style={{ color: "var(--text-muted)" }}
-        >
-          {t.projects.shotSoon}
-        </span>
+        {project.facts ? (
+          <>
+            <div className="flex flex-col gap-6">
+              {project.facts.map((fact) => (
+                <div key={fact.label.en} className="flex items-baseline gap-4">
+                  <span
+                    className="text-4xl md:text-5xl font-bold tabular-nums shrink-0"
+                    style={{ color, letterSpacing: "-0.03em" }}
+                  >
+                    {fact.value}
+                  </span>
+                  <span
+                    className="text-sm leading-snug"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {fact.label[lang]}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {project.shotsWithheld && (
+              <p
+                className="text-xs leading-relaxed pt-5"
+                style={{
+                  color: "var(--text-muted)",
+                  borderTop: "1px solid var(--border)",
+                }}
+              >
+                {project.shotsWithheld[lang]}
+              </p>
+            )}
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-3 h-full">
+            <span
+              className="text-5xl font-bold select-none"
+              style={{ color: color + "40", letterSpacing: "-0.04em" }}
+              aria-hidden
+            >
+              {project.title.slice(0, 2)}
+            </span>
+            <span
+              className="font-mono text-[11px] tracking-widest uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {t.projects.shotSoon}
+            </span>
+          </div>
+        )}
       </div>
     );
   }

@@ -38,6 +38,10 @@ export interface Project {
   featured?: boolean;
   /** Drop screenshots into /public/projects/ — see the README there. */
   shots?: Shot[];
+  /** Shown in place of a screenshot when shots are deliberately withheld. */
+  facts?: { value: string; label: LocalizedText }[];
+  /** Why there is no screenshot. Rendered under the facts panel. */
+  shotsWithheld?: LocalizedText;
 }
 
 export const projects: Project[] = [
@@ -247,6 +251,33 @@ export const projects: Project[] = [
       "Docker",
     ],
     featured: true,
+    facts: [
+      {
+        value: "14",
+        label: {
+          en: "districts under monitoring",
+          ru: "районов под мониторингом",
+        },
+      },
+      {
+        value: "8",
+        label: {
+          en: "roles — three see every district, five are scoped to their own",
+          ru: "ролей — три видят все районы, пять ограничены своим",
+        },
+      },
+      {
+        value: "3",
+        label: {
+          en: "months — the horizon of an AI-drafted individual plan",
+          ru: "месяца — горизонт индивидуального плана от ИИ",
+        },
+      },
+    ],
+    shotsWithheld: {
+      en: "Screens are not published: the system holds case data on minors at risk.",
+      ru: "Скриншоты не публикуются: система работает с делами несовершеннолетних из группы риска.",
+    },
   },
   {
     id: "rafael",
@@ -295,7 +326,6 @@ export const projects: Project[] = [
       "systemd",
       "pytest",
     ],
-    github: "https://github.com/Anomuru",
     featured: true,
     shots: [
       {
@@ -497,7 +527,6 @@ export const projects: Project[] = [
     category: "personal",
     status: "live",
     stack: ["Next.js", "TypeScript", "Socket.io", "NextAuth", "Zustand"],
-    github: "https://github.com/Anomuru/life-tracking-system",
   },
   {
     id: "mita",
